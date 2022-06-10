@@ -1,4 +1,6 @@
 // GLOBAL VARIABLE: const moves = ['rock', 'paper', 'scissors'];
+// GLOBAL VARIABLE: let playerScore = 0;
+// GLOBAL VARIABLE: let computerScore = 0;
 
 // FUNCTION: openingMessage() 
     // Print It's game time!
@@ -41,6 +43,15 @@
         // Print The computer wins!
     // else:
         // Print Tie!
+
+// FUNCTION: updateScores(winner)
+    // if winner equals 'p'
+        // playerScore += 1
+    // if winners equals 'c'
+        // computerScore += 1
+    
+    // Print You: playerScore wins
+    // Print Computer: computerSocre wins
     
 
 // FUNCTION: playAgain()
@@ -53,6 +64,11 @@
     // getComputerMove()
     // compareMoves()
     // printWinner()
+    // updateScores()
+
+
+    // if 
+
     // playAgain()
 
     // if playAgain equals 'y'
