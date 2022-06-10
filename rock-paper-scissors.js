@@ -28,7 +28,9 @@ function getComputerMove() {
 function compareMoves() {
     let playerMove = checkPlayerMove();
     let computerMove = getComputerMove();
-    console.log(computerMove);
+
+    console.log(`Your move: ${playerMove}`);
+    console.log(`Computer move: ${computerMove}`);
 
     if (playerMove === 'rock' && computerMove === 'paper') {
         return 'c';
@@ -51,5 +53,8 @@ function compareMoves() {
     else {
         return 't';
     }
+}
 
+function printWinner() {
+    let outcome = compareMoves();
 }
