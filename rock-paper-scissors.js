@@ -34,23 +34,17 @@ function compareMoves() {
 
     if (playerMove === 'rock' && computerMove === 'paper') {
         return 'c';
-    }
-    if (playerMove === 'rock' && computerMove === 'scissors') {
+    } if (playerMove === 'rock' && computerMove === 'scissors') {
         return 'p';
-    }
-    if (playerMove === 'paper' && computerMove === 'rock') {
+    } if (playerMove === 'paper' && computerMove === 'rock') {
         return 'p';
-    }
-    if (playerMove === 'paper' && computerMove === 'scissors') {
+    } if (playerMove === 'paper' && computerMove === 'scissors') {
         return 'c';
-    }
-    if (playerMove === 'scissors' && computerMove === 'rock') {
+    } if (playerMove === 'scissors' && computerMove === 'rock') {
         return 'c';
-    }
-    if (playerMove === 'scissors' && computerMove === 'paper') {
+    } if (playerMove === 'scissors' && computerMove === 'paper') {
         return 'p';
-    }
-    else {
+    } else {
         return 't';
     }
 }
@@ -61,15 +55,29 @@ function printWinner() {
     if (outcome === 'p') {
         playerScore += 1;
         alert('You win!');
-    }
-    else if (outcome === 'c') {
+    } else if (outcome === 'c') {
         computerScore += 1;
         alert('Computer wins.');
-    }
-    else {
+    } else {
         alert('Tie.');
     }
 
     console.log(`Your score: ${playerScore}`);
     console.log(`Computer score: ${computerScore}`)
+}
+
+function playAgain() {
+    return prompt('Would you like to play again?').toLowerCase();
+}
+
+function gameLoop() {
+    printWinner();
+    
+    let repeat = playAgain();
+    let responses = ['yes', 'y', 'yeah', 'ya', 'ye'];
+    if (responses.includes(repeat)) {
+        gameLoop();
+    } else {
+        alert('Thank you for playing!');
+    }
 }
