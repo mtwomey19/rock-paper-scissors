@@ -5,3 +5,8 @@ let computerScore = 0;
 function openingMessage() {
     console.log('It\'s game time!');
 }
+
+function getPlayerMove() {
+    return prompt('What\'s your move?');
+}
+
