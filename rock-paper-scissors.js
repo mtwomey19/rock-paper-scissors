@@ -24,3 +24,32 @@ function getComputerMove() {
     let random = Math.floor(Math.random() * moves.length);
     return moves[random];
 }
+
+function compareMoves() {
+    let playerMove = checkPlayerMove();
+    let computerMove = getComputerMove();
+    console.log(computerMove);
+
+    if (playerMove === 'rock' && computerMove === 'paper') {
+        return 'c';
+    }
+    if (playerMove === 'rock' && computerMove === 'scissors') {
+        return 'p';
+    }
+    if (playerMove === 'paper' && computerMove === 'rock') {
+        return 'p';
+    }
+    if (playerMove === 'paper' && computerMove === 'scissors') {
+        return 'c';
+    }
+    if (playerMove === 'scissors' && computerMove === 'rock') {
+        return 'c';
+    }
+    if (playerMove === 'scissors' && computerMove === 'paper') {
+        return 'p';
+    }
+    else {
+        return 't';
+    }
+
+}
