@@ -19,3 +19,8 @@ function checkPlayerMove() {
     }
     return playerMove.toLowerCase();
 }
+
+function getComputerMove() {
+    let random = Math.floor(Math.random() * moves.length);
+    return moves[random];
+}
