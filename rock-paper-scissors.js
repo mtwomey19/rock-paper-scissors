@@ -54,3 +54,16 @@ function compareMoves() {
         return 't';
     }
 }
+
+function printWinner() {
+    let outcome = compareMoves();
+    if (outcome === 'p') {
+        alert('You win!')
+    }
+    else if (outcome === 'c') {
+        alert('Computer wins.')
+    }
+    else {
+        alert('Tie.')
+    }
+}
