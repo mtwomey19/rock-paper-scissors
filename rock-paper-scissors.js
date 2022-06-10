@@ -71,6 +71,7 @@ function playAgain() {
 }
 
 function gameLoop() {
+    // Triggers gameplay
     printWinner();
     
     let repeat = playAgain();
