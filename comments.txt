@@ -65,10 +65,6 @@
     // compareMoves()
     // printWinner()
     // updateScores()
-
-
-    // if 
-
     // playAgain()
 
     // if playAgain equals 'y'
