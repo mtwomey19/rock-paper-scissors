@@ -10,3 +10,12 @@ function getPlayerMove() {
     return prompt('What\'s your move?');
 }
 
+function checkPlayerMove() {
+    let playerMove = getPlayerMove();
+
+    while (!moves.includes(playerMove.toLowerCase())) {
+        alert('Invalid move. Please try again.');
+        playerMove = getPlayerMove();
+    }
+    return playerMove.toLowerCase();
+}
