@@ -57,13 +57,19 @@ function compareMoves() {
 
 function printWinner() {
     let outcome = compareMoves();
+
     if (outcome === 'p') {
-        alert('You win!')
+        playerScore += 1;
+        alert('You win!');
     }
     else if (outcome === 'c') {
-        alert('Computer wins.')
+        computerScore += 1;
+        alert('Computer wins.');
     }
     else {
-        alert('Tie.')
+        alert('Tie.');
     }
+
+    console.log(`Your score: ${playerScore}`);
+    console.log(`Computer score: ${computerScore}`)
 }
