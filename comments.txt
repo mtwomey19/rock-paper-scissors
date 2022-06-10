@@ -1,0 +1,61 @@
+// GLOBAL VARIABLE: const moves = ['rock', 'paper', 'scissors'];
+
+// FUNCTION: openingMessage() 
+    // Print It's game time!
+
+// FUNCTION: getPlayerMove()
+    // Print What's your move? 
+    // return playerMove
+
+// FUNCTION: checkPlayerMove(playerMove)
+    // if (playerMove.toLowerCase() equls 'rock', 'paper' or 'scissors') 
+        // return
+    // while playerMove.toLowerCase() does not equal 'rock', 'paper', or 'scissors'
+        // Print: Invalid move. Please try again.
+        // Call getPlayerMove()
+
+// FUNCTION: getComputerMove()
+    // let random = Math.floor(Math.random() * moves.length);
+    // return moves[random];
+
+// FUNCTION compareMoves(playerMove, computerMove)
+    // if playerMove equals rock && computerMove equals paper:
+        // return 'c'
+    // if playerMove equals rock && computerMove equals scissors:
+        // return 'p'
+    // if playerMove equals paper && computerMove equals rock:
+        // return 'p'
+    //if playerMove equals paper && computerMove equals scissors:
+        // return 'c'
+    // if playerMove equals scissors && computerMove equals rock:
+        // return 'c'
+    // if playerMove equals scissors && computerMove equals paper:
+        // reutrn 'p'
+    // else:
+        // reutn 't'
+
+// FUNCTION printWinner(winner)
+    // if winner equals 'p':
+        // Print You Win!
+    // else if winner equals 'c':
+        // Print The computer wins!
+    // else:
+        // Print Tie!
+    
+
+// FUNCTION: playAgain()
+    // Print Would you like to play again?
+        // return input
+
+// FUNCTION: gameLoop()
+    // getPlayerMove()
+    // checkPlayerMove()
+    // getComputerMove()
+    // compareMoves()
+    // printWinner()
+    // playAgain()
+
+    // if playAgain equals 'y'
+        // gameLoop()
+    // else:
+        // Print Thank you for playing!
