@@ -54,7 +54,3 @@ function compareMoves() {
         return 't';
     }
 }
-
-function printWinner() {
-    let outcome = compareMoves();
-}
