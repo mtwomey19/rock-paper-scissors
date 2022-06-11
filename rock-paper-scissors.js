@@ -3,20 +3,14 @@ let playerScore = 0;
 let computerScore = 0;
 
 const buttons = document.querySelectorAll('button');
-buttons.forEach(button => button.addEventListener('click', getPlayerMove)); 
-
-
-function getPlayerMove(e) {
-    return e.srcElement.id;
-}
+buttons.forEach(button => button.addEventListener('click', gameLoop)); 
 
 function getComputerMove() {
     let random = Math.floor(Math.random() * moves.length);
     return moves[random];
 }
 
-function compareMoves() {
-    let playerMove = getPlayerMove();
+function compareMoves(playerMove) {
     let computerMove = getComputerMove();
 
     if (playerMove === 'rock' && computerMove === 'paper') {
@@ -36,9 +30,7 @@ function compareMoves() {
     }
 }
 
-function printWinner() {
-    let outcome = compareMoves();
-
+function printWinner(outcome) {
     if (outcome === 'p') {
         playerScore += 1;
         alert('You win!');
@@ -53,8 +45,9 @@ function printWinner() {
     console.log(`Computer score: ${computerScore}`)
 }
 
-function gameLoop() {
-    // Triggers gameplay
-    printWinner();
+function gameLoop(e) {
+    const playerMove = e.srcElement.id;
+    const outcome = compareMoves(playerMove);
+    printWinner(outcome);
     return;
 }
