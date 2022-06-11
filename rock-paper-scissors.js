@@ -52,12 +52,4 @@ function printWinner() {
 function gameLoop() {
     // Triggers gameplay
     printWinner();
-    
-    let repeat = playAgain();
-    let responses = ['yes', 'y', 'yeah', 'ya', 'ye'];
-    if (responses.includes(repeat)) {
-        gameLoop();
-    } else {
-        alert('Thank you for playing!');
-    }
 }
