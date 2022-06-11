@@ -45,9 +45,14 @@ function createResultsDiv() {
     const compScoreP = document.createElement('p');
     compScoreP.setAttribute('id', 'compScore');
 
+    const finalResult = document.createElement('p');
+    finalResult.setAttribute('id', 'finalResult');
+
     resultsContain.appendChild(outcomePara);
     resultsContain.appendChild(playerScoreP);
     resultsContain.appendChild(compScoreP);
+    resultsContain.appendChild(finalResult);
+
     body.appendChild(resultsContain);
 }
 
@@ -70,6 +75,21 @@ function printResults(outcome) {
     compScoreP.textContent = `Computer score: ${computerScore}`;
 }
 
+function endGame() {
+    const finalResult = document.querySelector('#finalResult');
+    if (playerScore === 2) {
+        finalResult.textContent('You win the series!');
+    } 
+    if (computerScore === 2) {
+        finalResult.textContent('The compuer wins the series.');
+    }
+
+}
+
+function resetGame() {
+    
+}
+
 function gameLoop(e) {
     const playerMove = e.srcElement.id;
     const outcome = compareMoves(playerMove);
@@ -81,5 +101,6 @@ function gameLoop(e) {
     count += count;
 
     printResults(outcome);
+    endGame();
     return;
 }
