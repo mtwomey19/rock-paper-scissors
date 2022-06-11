@@ -87,11 +87,20 @@ function endGame() {
 
 }
 
+function createNewGameBtn() {
+    const body = document.querySelector('body');
+    const newGameBtn = document.createElement('button');
+    newGameBtn.setAttribute('id', 'newGame');
+    newGameBtn.textContent = 'New Game';
+    body.appendChild(newGameBtn);
+
+
+}
+
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
 
-    // Set all children of resultsContain div to empty
     const resultsContain = document.querySelector('#resultsContain');
     let children = resultsContain.childNodes;
     
@@ -105,10 +114,13 @@ function gameLoop(e) {
     if (count === 0) {
         createResultsDiv();
     }
+
+
     count += 1;
 
     printResults(outcome);
     endGame();
     resetGame();
+    newGame();
     return;
 }
