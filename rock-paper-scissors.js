@@ -51,7 +51,7 @@ function createResultsDiv() {
     body.appendChild(resultsContain);
 }
 
-function printWinner(outcome) {
+function printResults(outcome) {
     const outcomePara = document.querySelector('#outcomePara');
     const playerScoreP = document.querySelector('#playerScore');
     const compScoreP = document.querySelector('#compScore');
@@ -80,6 +80,6 @@ function gameLoop(e) {
     }
     count += count;
 
-    printWinner(outcome);
+    printResults(outcome);
     return;
 }
