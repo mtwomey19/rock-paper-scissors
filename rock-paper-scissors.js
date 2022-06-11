@@ -58,6 +58,15 @@ function createResultsDiv() {
     body.appendChild(resultsContain);
 }
 
+function createNewGameBtn() {
+    const body = document.querySelector('body');
+    const newGameBtn = document.createElement('button');
+    newGameBtn.setAttribute('id', 'newGame');
+    newGameBtn.textContent = 'New Game';
+    body.appendChild(newGameBtn);
+    return newGameBtn;
+}
+
 function printResults(outcome) {
     const outcomePara = document.querySelector('#outcomePara');
     const playerScoreP = document.querySelector('#playerScore');
@@ -95,20 +104,9 @@ function endGame(winsNeeded) {
 
 }
 
-function createNewGameBtn() {
-    const body = document.querySelector('body');
-    const newGameBtn = document.createElement('button');
-    newGameBtn.setAttribute('id', 'newGame');
-    newGameBtn.textContent = 'New Game';
-    body.appendChild(newGameBtn);
-    return newGameBtn;
-}
-
-
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
-
 
     const resultsContain = document.querySelector('#resultsContain');
     let children = resultsContain.childNodes;
@@ -128,7 +126,6 @@ function gameLoop(e) {
     if (count === 0) {
         createResultsDiv();
     }
-
     count += 1;
 
     printResults(outcome);
