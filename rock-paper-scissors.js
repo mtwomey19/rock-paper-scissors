@@ -100,8 +100,10 @@ function endGame(winsNeeded) {
     }
 
     const newGameBtn = createNewGameBtn();
-    newGameBtn.addEventListener('click', resetGame)
+    newGameBtn.addEventListener('click', resetGame);
 
+    const moveButtons = document.querySelectorAll('.move');
+    moveButtons.forEach(button => button.disabled = true);
 }
 
 function resetGame() {
@@ -117,6 +119,8 @@ function resetGame() {
     const newGameBtn = document.querySelector('#newGame');
     body.removeChild(newGameBtn);
 
+    const moveButtons = document.querySelectorAll('.move');
+    moveButtons.forEach(button => button.disabled = false);
 }
 
 function gameLoop(e) {
