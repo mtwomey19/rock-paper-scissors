@@ -7,25 +7,23 @@ const buttons = document.querySelectorAll('.move');
 buttons.forEach(button => button.addEventListener('click', gameLoop)); 
 
 
-function getComputerMove() {
+function getCpuMove() {
     let random = Math.floor(Math.random() * moves.length);
     return moves[random];
 }
 
-function compareMoves(playerMove) {
-    let computerMove = getComputerMove();
-
-    if (playerMove === 'rock' && computerMove === 'paper') {
+function compareMoves(playerMove, cpuMove) {
+    if (playerMove === 'rock' && cpuMove === 'paper') {
         return 'c';
-    } if (playerMove === 'rock' && computerMove === 'scissors') {
+    } if (playerMove === 'rock' && cpuMove === 'scissors') {
         return 'p';
-    } if (playerMove === 'paper' && computerMove === 'rock') {
+    } if (playerMove === 'paper' && cpuMove === 'rock') {
         return 'p';
-    } if (playerMove === 'paper' && computerMove === 'scissors') {
+    } if (playerMove === 'paper' && cpuMove === 'scissors') {
         return 'c';
-    } if (playerMove === 'scissors' && computerMove === 'rock') {
+    } if (playerMove === 'scissors' && cpuMove === 'rock') {
         return 'c';
-    } if (playerMove === 'scissors' && computerMove === 'paper') {
+    } if (playerMove === 'scissors' && cpuMove === 'paper') {
         return 'p';
     } else {
         return 't';
@@ -38,21 +36,25 @@ function createResultsDiv() {
     const resultsContain = document.createElement('div');
     resultsContain.setAttribute('id', 'resultsContain');
 
+    const cpuMove = document.createElement('p');
+    cpuMove.setAttribute('id', 'cpuMove');
+
     const outcomePara = document.createElement('p');
     outcomePara.setAttribute('id', 'outcomePara');
 
     const playerScoreP = document.createElement('p');
     playerScoreP.setAttribute('id', 'playerScore');
 
-    const compScoreP = document.createElement('p');
-    compScoreP.setAttribute('id', 'compScore');
+    const cpuScore = document.createElement('p');
+    cpuScore.setAttribute('id', 'cpuScore');
 
     const finalResult = document.createElement('p');
     finalResult.setAttribute('id', 'finalResult');
 
+    resultsContain.appendChild(cpuMove);
     resultsContain.appendChild(outcomePara);
     resultsContain.appendChild(playerScoreP);
-    resultsContain.appendChild(compScoreP);
+    resultsContain.appendChild(cpuScore);
     resultsContain.appendChild(finalResult);
 
     body.appendChild(resultsContain);
@@ -67,10 +69,13 @@ function createNewGameBtn() {
     return newGameBtn;
 }
 
-function printResults(outcome) {
+function printResults(outcome, cpuMove) {
     const outcomePara = document.querySelector('#outcomePara');
     const playerScoreP = document.querySelector('#playerScore');
-    const compScoreP = document.querySelector('#compScore');
+    const cpuScore = document.querySelector('#cpuScore');
+
+    const cpuMoveP = document.querySelector('#cpuMove');
+    cpuMoveP.textContent = cpuMove;
 
     if (outcome === 'p') {
         playerScore += 1;
@@ -82,8 +87,7 @@ function printResults(outcome) {
         outcomePara.textContent = 'Tie.'
     }
 
-    playerScoreP.textContent = `Your score: ${playerScore}`;
-    compScoreP.textContent = `Computer score: ${computerScore}`;
+    playerScoreP.textContent = `Your score: ${playerScore}`; cpuScore.textContent = `Computer score: ${computerScore}`;
 }
 
 function endGame(winsNeeded) {
@@ -125,14 +129,16 @@ function resetGame() {
 
 function gameLoop(e) {
     const playerMove = e.srcElement.id;
-    const outcome = compareMoves(playerMove);
+    const cpuMove = getCpuMove();
+
+    const outcome = compareMoves(playerMove, cpuMove);
 
     if (count === 0) {
         createResultsDiv();
     }
     count += 1;
 
-    printResults(outcome);
+    printResults(outcome, cpuMove);
     endGame(2);
     return;
 }
