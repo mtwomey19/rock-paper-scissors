@@ -2,8 +2,12 @@ const moves = ['rock', 'paper', 'scissors'];
 let playerScore = 0;
 let computerScore = 0;
 
-function getPlayerMove() {
-    return prompt('What\'s your move?');
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', getPlayerMove)); 
+
+
+function getPlayerMove(e) {
+    return e.srcElement.id;
 }
 
 function getComputerMove() {
@@ -52,4 +56,5 @@ function printWinner() {
 function gameLoop() {
     // Triggers gameplay
     printWinner();
+    return;
 }
