@@ -30,24 +30,56 @@ function compareMoves(playerMove) {
     }
 }
 
+function createResultsDiv() {
+    const body = document.querySelector('body');
+
+    const resultsContain = document.createElement('div');
+    resultsContain.setAttribute('id', 'resultsContain');
+
+    const outcomePara = document.createElement('p');
+    outcomePara.setAttribute('id', 'outcomePara');
+
+    const playerScoreP = document.createElement('p');
+    playerScoreP.setAttribute('id', 'playerScore');
+
+    const compScoreP = document.createElement('p');
+    compScoreP.setAttribute('id', 'compScore');
+
+    resultsContain.appendChild(outcomePara);
+    resultsContain.appendChild(playerScoreP);
+    resultsContain.appendChild(compScoreP);
+    body.appendChild(resultsContain);
+}
+
 function printWinner(outcome) {
+    const outcomePara = document.querySelector('#outcomePara');
+    const playerScoreP = document.querySelector('#playerScore');
+    const compScoreP = document.querySelector('#compScore');
+
     if (outcome === 'p') {
         playerScore += 1;
-        alert('You win!');
+        outcomePara.textContent = 'You Win!'
     } else if (outcome === 'c') {
         computerScore += 1;
-        alert('Computer wins.');
+        outcomePara.textContent = 'Computer Wins.'
     } else {
-        alert('Tie.');
+        outcomePara.textContent = 'Tie.'
     }
 
-    console.log(`Your score: ${playerScore}`);
-    console.log(`Computer score: ${computerScore}`)
+    playerScoreP.textContent = `Your score: ${playerScore}`;
+    compScoreP.textContent = `Computer score: ${computerScore}`;
 }
 
 function gameLoop(e) {
     const playerMove = e.srcElement.id;
     const outcome = compareMoves(playerMove);
+
+    let count = 0;
+    if (count === 0) {
+        createResultsDiv();
+    }
+    count += count;
+
     printWinner(outcome);
     return;
 }
