@@ -3,8 +3,9 @@ let playerScore = 0;
 let computerScore = 0;
 let count = 0;
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.move');
 buttons.forEach(button => button.addEventListener('click', gameLoop)); 
+
 
 function getComputerMove() {
     let random = Math.floor(Math.random() * moves.length);
@@ -76,14 +77,21 @@ function printResults(outcome) {
     compScoreP.textContent = `Computer score: ${computerScore}`;
 }
 
-function endGame() {
+function endGame(winsNeeded) {
     const finalResult = document.querySelector('#finalResult');
-    if (playerScore === 2) {
+    if (playerScore !== winsNeeded && computerScore !== winsNeeded) {
+        return;
+    }
+
+    if (playerScore === winsNeeded) {
         finalResult.textContent = 'You win the series!';
     } 
-    if (computerScore === 2) {
+    if (computerScore === winsNeeded) {
         finalResult.textContent = 'The compuer wins the series.';
     }
+
+    const newGameBtn = createNewGameBtn();
+    newGameBtn.addEventListener('click', resetGame)
 
 }
 
@@ -93,18 +101,24 @@ function createNewGameBtn() {
     newGameBtn.setAttribute('id', 'newGame');
     newGameBtn.textContent = 'New Game';
     body.appendChild(newGameBtn);
-
-
+    return newGameBtn;
 }
+
 
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
 
+
     const resultsContain = document.querySelector('#resultsContain');
     let children = resultsContain.childNodes;
     
     children.forEach(child => child.textContent = '');
+
+    const body = document.querySelector('body');
+    const newGameBtn = document.querySelector('#newGame');
+    body.removeChild(newGameBtn);
+
 }
 
 function gameLoop(e) {
@@ -115,12 +129,9 @@ function gameLoop(e) {
         createResultsDiv();
     }
 
-
     count += 1;
 
     printResults(outcome);
-    endGame();
-    resetGame();
-    newGame();
+    endGame(2);
     return;
 }
