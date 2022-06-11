@@ -49,10 +49,6 @@ function printWinner() {
     console.log(`Computer score: ${computerScore}`)
 }
 
-function playAgain() {
-    return prompt('Would you like to play again?').toLowerCase();
-}
-
 function gameLoop() {
     // Triggers gameplay
     printWinner();
