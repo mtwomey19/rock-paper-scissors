@@ -1,6 +1,7 @@
 const moves = ['rock', 'paper', 'scissors'];
 let playerScore = 0;
 let computerScore = 0;
+let count = 0;
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => button.addEventListener('click', gameLoop)); 
@@ -78,29 +79,36 @@ function printResults(outcome) {
 function endGame() {
     const finalResult = document.querySelector('#finalResult');
     if (playerScore === 2) {
-        finalResult.textContent('You win the series!');
+        finalResult.textContent = 'You win the series!';
     } 
     if (computerScore === 2) {
-        finalResult.textContent('The compuer wins the series.');
+        finalResult.textContent = 'The compuer wins the series.';
     }
 
 }
 
 function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+
+    // Set all children of resultsContain div to empty
+    const resultsContain = document.querySelector('#resultsContain');
+    let children = resultsContain.childNodes;
     
+    children.forEach(child => child.textContent = '');
 }
 
 function gameLoop(e) {
     const playerMove = e.srcElement.id;
     const outcome = compareMoves(playerMove);
 
-    let count = 0;
     if (count === 0) {
         createResultsDiv();
     }
-    count += count;
+    count += 1;
 
     printResults(outcome);
     endGame();
+    resetGame();
     return;
 }
