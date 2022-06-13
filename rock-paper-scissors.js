@@ -58,6 +58,10 @@ function createResultsDiv() {
     resultsContain.appendChild(finalResult);
 
     body.appendChild(resultsContain);
+
+    const children = resultsContain.childNodes;
+    console.log(children);
+    children.forEach(child => child.setAttribute('class', 'results'));
 }
 
 function createNewGameBtn() {
@@ -75,19 +79,20 @@ function printResults(outcome, cpuMove) {
     const cpuScore = document.querySelector('#cpuScore');
 
     const cpuMoveP = document.querySelector('#cpuMove');
-    cpuMoveP.textContent = cpuMove;
+    cpuMove = cpuMove.substr(0, 1).toUpperCase() + cpuMove.substr(1);
+    cpuMoveP.textContent = `Computer Move: ${cpuMove}`;
 
     if (outcome === 'p') {
         playerScore += 1;
-        outcomePara.textContent = 'You Win!'
+        outcomePara.textContent = 'Outcome: Win'
     } else if (outcome === 'c') {
         computerScore += 1;
-        outcomePara.textContent = 'Computer Wins.'
+        outcomePara.textContent = 'Outcome: Loss'
     } else {
-        outcomePara.textContent = 'Tie.'
+        outcomePara.textContent = 'Outcome: Tie'
     }
 
-    playerScoreP.textContent = `Your score: ${playerScore}`; cpuScore.textContent = `Computer score: ${computerScore}`;
+    playerScoreP.textContent = `Your Score: ${playerScore}`; cpuScore.textContent = `Computer Score: ${computerScore}`;
 }
 
 function endGame(winsNeeded) {
